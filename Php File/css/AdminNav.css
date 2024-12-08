@@ -1,4 +1,3 @@
-/* General Styling */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -10,7 +9,9 @@ body {
 
 nav {
     height: 150px;
-    background: linear-gradient(45deg, #004fa3, #00bfff);
+    background:linear-gradient(to right, rgb(12, 82, 168), #007bff) ;
+
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,7 +19,6 @@ nav {
     position: relative;
 }
 
-/* Admin Header Fix */
 .admin-header {
     display: flex;
     align-items: center;
@@ -31,18 +31,17 @@ nav {
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
     padding: 12px;
-    position: sticky;
-    top: 0;
-    z-index: 10; /* Keeps the header above other content */
 }
 
-/* Admin Logo and Profile Picture */
+
+
 .admin-logo {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100px;
     width: auto;
+    
     display: block;
     margin: 0;
 }
@@ -63,7 +62,6 @@ nav {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Admin Menu */
 .admin-menu ul {
     list-style: none;
     padding: 0;
@@ -162,7 +160,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Media Queries for Smaller Screens */
 @media (max-width: 1024px) {
     .SearchBar {
         width: 50%;
@@ -199,25 +196,22 @@ body {
 
     .admin-header {
         margin-left: 0;
-        margin-top: 0;
-        padding: 8px;
-        height: 90px;  /* Further reduce height on mobile */
-        width: 80px;
-    }
-    
-    .admin-logo {
-        max-width: 70px;
-    }
-
-    .admin-profile-picture {
-        width: 50px;   /* Reduce profile picture size */
-        height: 50px;
+        margin-right: 0;
     }
 
     nav {
         flex-direction: column;
         padding: 10px;
         justify-content: center;
+        align-items: center;
+    }
+
+    .admin-header img {
+        max-width: 100px;
+    }
+
+    .admin-menu ul {
+        flex-direction: column;
         align-items: center;
     }
 
