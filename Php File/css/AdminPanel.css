@@ -1,0 +1,316 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Welcome Header */
+.welcome-header {
+    background: linear-gradient(to right, rgb(12, 82, 168), #007bff);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.welcome-header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Nav Styling */
+nav {
+    background: linear-gradient(to right, rgb(12, 82, 168), #007bff);
+    color: white;
+    padding: 0;  /* Remove padding from the nav */
+    margin: 0;   /* Remove margin from the nav */
+    position: absolute; /* Absolute positioning */
+    top: 0;   /* Set the top position to 0 */
+    width: 100%;  /* Ensure it spans the entire width */
+    z-index: 999;  /* Ensure it stays on top */
+}
+
+/* Logo Container Styling */
+nav .logo-container {
+    margin: 0;  /* Remove margin */
+    padding: 10px 20px;  /* Add padding for space */
+    height: 60px;  /* Set a fixed height */
+    display: flex;
+    justify-content: flex-start;  /* Align logo to the left */
+    align-items: center;  /* Vertically align the logo */
+}
+
+nav .logo-container img {
+    height: 40px;  /* Adjust logo size */
+    width: auto;
+}
+
+/* Rest of Navigation Links Styling */
+nav a {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Container for all page content */
+.container {
+    margin-top: 120px; /* Adjusted for space below the navbar */
+    padding: 20px;
+}
+
+/* Dashboard Overview */
+.dashboard-overview {
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.stat-box h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+.stat-box p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 10px;
+}
+
+/* Summary Header */
+.summary-header {
+    background: linear-gradient(to right, rgb(12, 82, 168), #007bff);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+.summary-header h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Make the text above the tables (h3) bigger and bold */
+.summary-box h3 {
+    margin: 10px 0;
+    color: #2c3e50;
+    font-size: 28px; /* Increase font size */
+    font-weight: bold; /* Make it bold */
+     /* Make the text uppercase for more visual impact */
+}
+
+/* Summary Content */
+.summary-content {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.summary-box {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 45%;
+    text-align: center;
+    overflow-x: auto; /* Enable scrolling if the table is too wide */
+}
+
+.summary-box h3 {
+    margin: 10px 0;
+    color: #2c3e50;
+}
+
+/* Summary Tables */
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.summary-table th, .summary-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.summary-table th {
+    background-color: #1e2a78;
+    color: white;
+    font-size: 16px; /* Standard font size */
+    font-weight: bold;
+     /* Make the text more visual and prominent */
+}
+
+.summary-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.summary-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table td img {
+    width: 100%; /* Makes the image fit the column width */
+    height: auto; /* Keeps the image's aspect ratio intact */
+    max-width: 150px; /* Optional: Sets a max width to avoid stretching */
+    object-fit: cover; /* Ensures the image fills the cell and maintains its aspect ratio */
+    border-radius: 5px; /* Optional: Rounds the corners of the image */
+}
+
+/* Room and Booking Summary */
+.room-booking-summary {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.room-booking-summary h2 {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Tables Styling for Rooms and Bookings */
+.table-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+table th,
+table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+}
+
+table td {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Table Row Hover Effect */
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #004fa3;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 16px;
+}
+
+footer p {
+    margin: 0;
+}
+
+.no-records-message {
+    background-color: #d6eaf8; /* Light blue background to match your theme */
+    border: 1px solid #a9cce3; /* Slightly darker blue border */
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    color: #21618c; /* Dark blue text color */
+    font-weight: bold;
+}
+
+/* Responsive Design for Tablet and Phone */
+@media (max-width: 768px) {
+    .summary-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .summary-box {
+        width: 80%;
+    }
+
+    table {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .stat-box {
+        width: 200px;
+    }
+
+    .welcome-header h1 {
+        font-size: 24px;
+    }
+
+    nav a {
+        padding: 8px 16px;
+    }
+}
+
+/* For Phones */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .welcome-header {
+        padding: 15px;
+    }
+
+    .summary-header h2,
+    .room-booking-summary h2 {
+        font-size: 18px;
+    }
+
+    table td {
+        font-size: 14px;
+    }
+
+    table th {
+        font-size: 16px;
+    }
+
+    .stat-box {
+        width: 180px;
+    }
+}

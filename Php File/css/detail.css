@@ -1,0 +1,201 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar Styling */
+nav {
+    height: 150px;
+    background-color: #004fa3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    background-color: white;
+    height: 125px;
+    width: 105px;
+    margin-left: 30px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    padding: 12px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Room Details Section */
+.container1 {
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+    min-height: 300px;
+}
+
+.room-details {
+    background: #ffffff;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-details:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+.room-details img {
+    max-width: 350px;
+    max-height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.room-info {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.room-info h2 {
+    color: #004fa3;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.room-info p, .room-info span {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.room-info span {
+    font-weight: bold;
+    color: #333;
+}
+
+.room-info .custom-select {
+    width: 370px;
+    height: 40px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    color: #333;
+    display: inline-block;
+    transition: border-color 0.3s ease;
+}
+
+.room-info .custom-select:focus {
+    border-color: #66afe9;
+    outline: none;
+}
+
+.room-info .btn-submit {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+}
+
+.room-info .btn-submit:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.room-info .btn-submit:focus {
+    outline: none;
+    box-shadow: 0 0 3px 2px rgba(70, 130, 180, 0.5);
+}
+
+.room-info .btn-submit:active {
+    background-color: #003f7f;
+}
+
+.room-info .availability p {
+    color: red;
+}
+
+.room-info .form-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.room-info .btn-back {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #004fa3;
+    text-align: center;
+    width: 750px;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.room-info .btn-back:hover {
+    background-color: darkcyan;
+    transform: scale(1.02);
+}
+
+/* Footer Styling */
+footer {
+    background-color: #004fa3;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 16px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Media Query for Responsive Design */
+@media (max-width: 768px) {
+    .room-details {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .room-details img {
+        max-width: 90%;
+    }
+
+    .room-info .custom-select {
+        width: 100%;
+    }
+
+    .room-info .btn-back {
+        width: 100%;
+    }
+}

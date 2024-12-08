@@ -1,0 +1,406 @@
+/* General Styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar Styling */
+        nav {
+            height: 150px;
+            background-color: #004fa3;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .image-container {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            background-color: white;
+            height: 125px;
+            width: 105px;
+            margin-left: 30px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            padding: 12px;
+        }
+
+        img {
+    max-width: 100%; /* Ensures other images scale properly */
+    height: auto; /* Maintains aspect ratio */
+}
+
+/* Logo Image Styling */
+.image-container img.logo-img {
+    height: 120px; /* Keeps the logo height fixed */
+    width: auto; /* Maintains the aspect ratio */
+    min-width: 120px; /* Ensures the logo doesn't exceed the fixed size */
+    display: block; /* Prevents extra space around the image */
+    margin: 0; /* Removes unwanted margin */
+}
+
+/* Profile Picture Styling */
+.profile-picture-update {
+    width: 80px; /* Set the profile picture size */
+    height: 80px; /* Ensures the profile picture is a perfect square */
+    object-fit: cover; /* Ensures the image covers the space without distortion */
+    border-radius: 50%; /* Makes the profile picture circular */
+    border: 2px solid #004fa3; /* Optional border for better visibility */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for effect */
+    transition: transform 0.3s, box-shadow 0.3s; /* Adds smooth hover effects */
+}
+
+.profile-picture-update:hover {
+    transform: scale(1.1); /* Slightly enlarge the profile picture on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhances the shadow effect on hover */
+}
+        .image-container img.logo-img {
+    height: 120px; /* Set a stable height for the logo */
+    width: auto;  /* Keep the aspect ratio */
+    max-width: 120px; /* Prevents the logo from becoming too wide */
+    display: block;
+    margin: 0; /* Removes extra space around the image */
+}
+
+        .SearchBar {
+            height: 90%;
+            width: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .SearchBar form {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .SearchBar input[type="search"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px 0 0 20px;
+            width: 100%; /* Ensure input takes up the entire space of the container */
+        }
+
+        .SearchBar input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0 20px 20px 0;
+            background-color: #555;
+            color: white;
+            cursor: pointer;
+            width: 80px;
+        }
+
+        .SearchBar input[type="submit"]:hover {
+            background-color: #777;
+        }
+
+        .Menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-right: 20px;
+        }
+
+        .Menu ul li {
+            margin: 0;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropbtn {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .dropbtn img {
+            border-radius: 50%;
+            width: 80px;
+            margin-right: 15px;
+            height: 80px;
+        }
+
+        /* Rooms Section */
+        .Rooms {
+            padding: 20px;
+            text-align: center;
+            flex: 1; /* Allows the section to expand */
+        }
+
+        .Room-container {
+            background: linear-gradient(to right, #004fa3, #007bff);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .Room-container h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        /* Room Grid Wrapper */
+        .room-grid-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center horizontally */
+            justify-content: flex-start; /* Align content from the top */
+            padding-bottom: 50px;
+            width: 100%;
+        }
+
+        .room-header-container {
+            background-color: #004fa3;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 90%;  /* Adjusted width to eliminate gaps */
+            max-width: 1200px; /* Ensure max width */
+        }
+
+        .room-header-container h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .room-header-container hr {
+            margin-top: 20px;
+            border: none;
+            height: 2px;
+            background-color: #fff;
+        }
+
+        .room-grid {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping of room grid items */
+            gap: 20px;
+            width: 100%;
+            justify-content: center; /* Center the items */
+        }
+
+        .broom {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 250px; /* Fixed width for the room */
+        }
+
+        .broom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .images img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .broom a {
+            color: #004fa3;
+            text-decoration: none;
+            font-size: 1.2em;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .broom a:hover {
+            text-decoration: underline;
+        }
+
+        .broom p {
+            color: #666;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        footer {
+            background-color: #004fa3;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 1rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .contains-rooms {
+    background-color: #f0f8ff; /* Light background color */
+    padding: 20px; /* Adds space around the room grid */
+    border-radius: 10px; /* Round the corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow around the container */
+    margin-top: 10px; /* Reduced margin to bring it closer to the header */
+    width: 90%; /* Adjust width to match the header container */
+    max-width: 1200px; /* Ensure max width matches the header */
+    margin-left: auto;
+    margin-right: auto; /* Center align the container */
+}
+/* Media Query for Tablets (screen width between 600px and 1024px) */
+@media (max-width: 1024px) {
+    .SearchBar {
+        width: 50%;
+    }
+
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .Menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        margin-right: 0;
+    }
+
+    .image-container {
+        margin-left: 0;
+        width: 90px;
+        height: auto;
+    }
+
+    .image-container img {
+        width: 80px; /* Adjust logo width for tablets */
+        height: auto;
+    }
+
+    .Rooms .Room-container h1 {
+        font-size: 2rem;
+    }
+
+    .room-header-container h1 {
+        font-size: 2rem;
+    }
+
+    .room-grid {
+        flex-direction: column;
+    }
+
+    .broom {
+        width: 95%; /* Make the room container take full width */
+        margin-bottom: 20px;
+    }
+}
+
+/* Media Query for Phones (screen width less than 600px) */
+@media (max-width: 600px) {
+    .SearchBar {
+        width: 80%;
+    }
+    .contains-rooms{
+        width: 80%;
+    }
+    .image-container {
+        width: 70px; /* Adjust width for phone */
+        height: 100px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        margin-bottom: 20px;
+        margin-top:auto
+
+        
+    }
+
+    .image-container img {
+        width: 60px; /* Adjust logo width for phones */
+        height: auto;
+        
+        display: flex;
+        justify-content: center;
+        margin-left: 5px;
+       
+    }
+
+    nav {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .Menu ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-right: 0;
+    }
+
+    .Menu ul li {
+        text-align: center;
+        width: 100%;
+    }
+
+    .Rooms .Room-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .room-header-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .room-grid {
+        flex-direction: column;
+    }
+
+    .broom {
+        width: 93%; /* Full width on mobile */
+        
+        display:flex;
+    }
+
+    footer {
+        font-size: 0.9rem;
+    }
+}
+

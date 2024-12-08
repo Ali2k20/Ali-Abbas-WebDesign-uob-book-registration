@@ -1,0 +1,159 @@
+/* Reset margin and padding for body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light background */
+}
+
+/* Container Styling */
+.container {
+    width: 100%;
+    max-width: 1300px; /* Limit max width for larger screens */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Page Title Styling */
+.page-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* Room Grid Styling */
+.room-grid-wrapper {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: auto; /* Ensure height adjusts to content */
+    padding: 20px 0;
+}
+
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+/* Individual Room Box Styling */
+.broom {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover Effect for Rooms */
+.broom:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow for effect */
+}
+
+/* Image Styling */
+.images img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Link Styling in Room Box */
+.broom a {
+    color: #004fa3;
+    text-decoration: none;
+    font-size: 1.2em;
+    display: block;
+    margin-top: 10px;
+}
+
+.broom a:hover {
+    text-decoration: underline; /* Underline effect on hover */
+}
+
+/* Room Description Styling */
+.broom p {
+    color: #666;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #004fa3;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design for Tablets */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .page-title {
+        font-size: 1.5em;
+    }
+
+    .room-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .broom {
+        padding: 10px;
+    }
+
+    .broom a {
+        font-size: 1em;
+    }
+
+    .broom p {
+        font-size: 0.9em;
+    }
+
+    footer {
+        padding: 8px;
+    }
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .page-title {
+        font-size: 1.2em;
+    }
+
+    .room-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .broom {
+        padding: 8px;
+    }
+
+    .broom a {
+        font-size: 0.9em;
+    }
+
+    .broom p {
+        font-size: 0.8em;
+    }
+
+    footer {
+        padding: 5px;
+    }
+}

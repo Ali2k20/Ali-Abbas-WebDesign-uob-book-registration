@@ -1,0 +1,367 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Specifically target the h2 in the header for gradient and spacing */
+header h2 {
+    margin-top: 40px; /* Gap from the header */
+    text-align: center;
+    background: linear-gradient(45deg, #004fa3, #00bfff); /* Gradient blue */
+    padding: 20px;
+    color: white;
+    width: 50%; /* Half the width of the page */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0px; /* Square corners */
+}
+
+/* Updated Add Room Button Style */
+.add-room-btn {
+    padding: 10px 15px;
+    background-color: #28a745;  /* Green color for better visibility */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;  /* Keep width as needed */
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    display: block;
+}
+
+/* Align the "Add Room" button to the left */
+.table-container tbody .add-room-btn {
+    margin-left: 0; /* Align button to the left */
+    width: auto; /* Keep the width based on the content */
+}
+
+/* Add hover effect to Add Room button */
+.add-room-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Table container styles */
+.table-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    overflow-x: auto; /* Allow horizontal scrolling */
+}
+
+/* Main padding */
+main {
+    padding: 20px;
+}
+
+/* Table Styling */
+.room-table, .booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+}
+
+.room-table th, .room-table td,
+.booking-table th, .booking-table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.room-table th, .booking-table th {
+    background-color: #004fa3;
+    color: white;
+}
+
+.room-table tr:nth-child(even), .booking-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Edit and Delete Buttons */
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.delete-btn:hover {
+    background-color: #e60000;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Form Buttons */
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.form-buttons button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-buttons button[type="submit"] {
+    background-color: #004fa3;
+    color: white;
+}
+
+.form-buttons button[type="submit"]:hover {
+    background-color: #007bff;
+}
+
+.close-modal-btn {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.close-modal-btn:hover {
+    background-color: #e60000;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="text"], input[type="number"], select, input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Table Centering */
+.room-table td, .booking-table td {
+    text-align: center;
+}
+
+.room-table th, .booking-table th {
+    text-align: center;
+}
+
+/* Alert Box Styles */
+.custom-alert {
+    position: relative;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    display: none;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    width: auto;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.custom-alert.show {
+    display: flex;
+    animation: fadeInAlert 0.5s ease-out;
+}
+
+.custom-alert span {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+@keyframes fadeInAlert {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Center message when no rows are present */
+.notable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+}
+
+.notable p {
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Table Header Styling */
+h2.table-header {
+    padding: 20px;
+    background: linear-gradient(45deg, #004fa3, #00bfff);
+    color: white;
+    font-size: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .room-table, .booking-table {
+        font-size: 14px;
+    }
+
+    h2.table-header {
+        font-size: 18px;
+    }
+
+    .modal-content {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .room-table, .booking-table {
+        font-size: 12px;
+    }
+
+    h2.table-header {
+        font-size: 16px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    .add-room-btn {
+        padding: 8px 12px;
+    }
+
+    .table-container {
+        padding: 15px;
+    }
+
+    main {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .room-table, .booking-table {
+        font-size: 10px;
+    }
+
+    h2.table-header {
+        font-size: 14px;
+    }
+
+    .modal-content {
+        width: 95%;
+    }
+
+    header h1 {
+        font-size: 18px;
+    }
+
+    .add-room-btn {
+        padding: 6px 10px;
+    }
+
+    .table-container {
+        padding: 10px;
+    }
+
+    main {
+        padding: 10px;
+    }
+}
+
+
+
+.room-table td img {
+    max-width: 350px;  
+    max-height: 200px; 
+   
+    border-radius: 8px; 
+}
