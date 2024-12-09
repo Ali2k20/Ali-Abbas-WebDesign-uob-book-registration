@@ -61,7 +61,7 @@
                       </tr>";
                 while ($row = $result->fetch()) {
                     echo "<tr>";
-                    echo "<td><a href='BookingDetail.php?booking_id={$row['BookingID']}'>" . $row["BookingID"] . "</a></td>";
+                    echo "<td>" . $row["BookingID"] . "</td>";
                     echo "<td>" . $row["FullName"] . "</td>";
                     echo "<td>" . $row["BookingDate"] . "</td>";
                     echo "<td>" . $row["RoomName"] . "</td>";
@@ -88,7 +88,7 @@
     </div>
 
     <footer class="footer">
-        <p>&copy; 2024 UOB Booking Room. All Rights Reserved.</p>
+        <p>&copy; Made Maithem and Sayed jaafar</p>
     </footer>
     <script>
         window.onload = function() {

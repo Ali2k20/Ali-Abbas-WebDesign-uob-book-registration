@@ -174,8 +174,7 @@ nav a {
 }
 
 table td img {
-    width: 100%; /* Makes the image fit the column width */
-    height: auto; /* Keeps the image's aspect ratio intact */
+   background-size: 100% 100%;  /* Keeps the image's aspect ratio intact */
     max-width: 150px; /* Optional: Sets a max width to avoid stretching */
     object-fit: cover; /* Ensures the image fills the cell and maintains its aspect ratio */
     border-radius: 5px; /* Optional: Rounds the corners of the image */

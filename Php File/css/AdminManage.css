@@ -365,3 +365,15 @@ h2.table-header {
    
     border-radius: 8px; 
 }
+
+footer {
+    background-color: #004fa3;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 16px;
+}
+
+footer p {
+    margin: 0;
+}

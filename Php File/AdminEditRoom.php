@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['room-id'])) {
                     $roompic = $destPath; // Use the new file path
                 }
             } else {
-                $msg1 ="The Picture is in the wrong form it should be jpg or jpeg or png or gif or webp only accepted please try again";
+                $msg1 ="only the Picture is in the wrong form it should be jpg or jpeg or png or gif or webp only accepted please try again or your profile wont be updated";
                 $roompic = $r['roompic'];
             }
                 
@@ -68,7 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['room-id'])) {
         $updateRoom->bindParam(6, $rid);
         $updateRoom->execute();
         if($updateRoom){
-            header("location:example.php?msg=Room Been Updated Successfully");
+            header("location:AdminRoomManage.php?msg=Room Named {$r['room_name']} Been Updated Successfully . $msg1    ");
+            exit();
         }
     } else {
         echo "Room not found. $rid";

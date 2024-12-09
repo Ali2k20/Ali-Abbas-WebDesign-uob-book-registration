@@ -12,7 +12,9 @@ if (!isset($_SESSION['activeUser'])) {
 if ($_SESSION['Type'] == "Admin") {
     header("location:Admin.php");
     exit();
-} else if ($_SESSION['Type'] == "student") {
+}
+
+  if ($_SESSION['Type'] == "student") {
     $emailRegex = '/^[0-9]{3,12}@stu\.uob\.edu\.bh$/';
 } else if ($_SESSION['Type'] == 'staff') {
     $emailRegex = '/^[a-zA-Z]{3,20}@uob\.edu\.bh$/';
@@ -21,7 +23,7 @@ if ($_SESSION['Type'] == "Admin") {
 $passwordRegex = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9_#@%*\\-]{8,24}$/";
 
 // If the form is submitted
-if (isset($_POST['submit'])) {
+if ($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['submit'])) {
     
     if (!empty($_POST['password'])) {
         $password = $_POST['password'];
@@ -52,14 +54,17 @@ if (isset($_POST['submit'])) {
     // Validate the email format
     if(!empty($_POST['email'])){
         $email = $_POST['email'];
+
+    }else {$email = $r['Email']; }
     if (!preg_match($emailRegex, $email)) {
         echo "<div class='message'>
                 <p>Please enter a valid email address . </p>
               </div><br>";
         echo "<a href='profileview.php'><button class='btn'>Go Back</button></a>";
+        exit();
         
     } 
-} else {$email = $r['Email']; }
+
 
     // Validate password format if password is provided
      if (!empty($_POST['password']) && !preg_match($passwordRegex, $password)) {

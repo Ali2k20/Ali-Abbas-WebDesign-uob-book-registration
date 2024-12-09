@@ -57,7 +57,7 @@ $query->execute();
                         <div class="dropdown-content">
                             <a href="HomePage.php">Home</a>
                             <a href="ProfileView.php">View Profile</a>
-                            <a href="ProfileEdit.php">Edit Profile</a>
+                           
                             <a href="logout.php">Log Out</a>
                         </div>
                     </div>
@@ -101,7 +101,7 @@ $query->execute();
     </div>
 
     <footer>
-        <p>&copy; 2024 UOB Booking Room. All Rights Reserved.</p>
+        <p>&copy; Made By Mathiam And Sayed jaafar</p>
     </footer>
 </body>
 </html>

@@ -5,6 +5,11 @@ if (!isset($_SESSION['activeUser'])) {
     header("Location: signin.php");
     exit();
 }
+else if($_SESSION['Type']=='admin')
+{
+    header('location:AdminPanel.php');
+}
+
 $id = $_SESSION["userid"];
 $query1 = $db->prepare("SELECT * FROM user WHERE id = ?");
 $query1->bindParam(1, $id);
@@ -136,5 +141,8 @@ if(isset($_SESSION['presearch'])){
             </div>
         </div>
     </div>
+    <footer>
+        <p>&copy; Made By Mathiam And Sayed jaafar</p>
+    </footer>
 </body>
 </html> 

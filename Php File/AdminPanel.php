@@ -1,16 +1,16 @@
 <?php session_start();
 require("conn.php");
 require("TimerDel.php");
-// Redirect Admins to the Admin page
+// redirect non user to sigin
 if (!isset($_SESSION['userid'])) {
     header("Location: signin.php");
     exit();
 }
 
-// Redirect unauthorized users to the Sign-In page
+// Redirect unauthorized users to the homepage.
 if(isset($_SESSION['Type'])){
-if ($_SESSION['Type'] == "student" && $_SESSION['Type'] == "staff") {
-    header("Location: signin.php");
+if ($_SESSION['Type'] == "student" | $_SESSION['Type'] == "staff") {
+    header("Location: HomePage.php");
     exit();
 }
 
@@ -61,7 +61,7 @@ $queryBookings = $db->prepare($bsql);
 <>
 <nav>
 <div class="admin-header">
-    <a href="HomePage.php"><img src="images/logo.png" alt="Admin Logo" class="admin-logo"></a>
+    <a href="AdminPanel.php"><img src="images/logo.png" alt="Admin Logo" class="admin-logo"></a>
 </div>
 
 <div class="admin-menu">
@@ -75,7 +75,7 @@ $queryBookings = $db->prepare($bsql);
                 </button>
                 <div class="admin-dropdown-content">
                     
-                    <a href="HomePage.php">Dashboard</a>
+                    <a href="AdminPanel.php">Dashboard</a>
                     <a href="logout.php">Log Out</a>
                 </div>
             </div>
@@ -107,7 +107,7 @@ $queryBookings = $db->prepare($bsql);
 
 
 
-<!-- Rooms and Booking Summary Section -->
+<!-- Rooms and Booking Summary Section this for the heading u know what i mean -->
 <div class="summary-header">
     <h2>Rooms and Booking Summary</h2>
 </div>
@@ -129,7 +129,7 @@ $queryBookings = $db->prepare($bsql);
             </thead>
             <tbody>
                 <?php
-                // Fetch rooms from the database
+                // Fetch rooms from the database which i called it itcollege 
                 
                 $queryRooms = $db->prepare("SELECT * FROM rooms");
                 $queryRooms->execute();
@@ -195,7 +195,9 @@ $queryBookings = $db->prepare($bsql);
     </div>
 </div>
 </div>
-
+<footer>
+        <p>&copy; Made By Mathiam And Sayed jaafar</p>
+    </footer>
 </body>
 </html>
 

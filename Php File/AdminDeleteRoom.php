@@ -9,11 +9,11 @@ require('conn.php');
      $del->execute();
 
       if($del){
-        header("location:example.php?msg=Room with ID $roomid has been successfully deleted from the system.");
+        header("location:AdminRoomManage.php?msg=Room with ID $roomid has been successfully deleted from the system.");
         exit();
       }
 
-  }
+  } 
 
 
 

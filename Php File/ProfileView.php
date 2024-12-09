@@ -31,10 +31,14 @@
 <body>
 <?php
 include("profilenav.php");
-$_SESSION['page'] = 'view';
+
 
 if (!isset($_SESSION['userid'])) {
     header("Location: signin.php");
+    exit();
+}
+else if($_SESSION['Type']=='Admin') {
+    header("Location: AdminPanel.php");
     exit();
 }
 
@@ -67,7 +71,7 @@ $Type = $user['Type'];
             <div class="profile-details">
                 <p><strong>Full Name:</strong> <?php echo $name; ?></p>
                 <p><strong>Email:</strong> <?php echo $email; ?></p>
-                <p><strong>Role:</strong> <?php echo $Type; ?></p>
+                <p><strong>UOB: </strong> <?php echo $Type; ?></p>
             </div>
             <button class="btn" id="editProfileButton" onclick="toggleEditForm()">Edit Profile</button>
         </div>
@@ -81,7 +85,7 @@ $Type = $user['Type'];
                 </div>
                 <div class="field input profile-picture-update">
                     <label for="profile_pic">Update Profile Picture</label>
-                    <input type="file" name="profile_pic" id="profile_pic">
+                    <input type="file" name="profile_pic" id="profile_pic"> 
                 </div>
                 <div class="field input">
                     <label for="name">Change Full Name</label>
@@ -110,5 +114,9 @@ $Type = $user['Type'];
             <button class="btn back-btn" onclick="toggleEditForm()">Go Back</button>
         </div>
     </div>
+    <footer>
+        <p>&copy; Made By Mathiam And Sayed jaafar</p>
+    </footer>
 </body>
 </html>
+
