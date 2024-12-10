@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['Type'])) {
     if($_SESSION['Type']=="student" || $_SESSION["Type"]== "staff") {
-    header("Location: HomePage.php");
+    header("Location: index.php");
     exit();
     }
 else if($_SESSION["Type"]== "Admin")
@@ -43,7 +43,7 @@ if (isset($_POST['signin'])) {
         if ($_SESSION['Type'] == 'student' ||$_SESSION['Type'] == 'staff'  ) {
             $_SESSION['activeUser'] = $row['Email'];
             $_SESSION['presearch'] = "";
-            header("Location: HomePage.php");
+            header("Location: index.php");
             exit();
         } else if ($_SESSION['Type'] == 'Admin') {
             header("Location: AdminPanel.php");

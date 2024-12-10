@@ -6,7 +6,7 @@ if (!isset($_SESSION["userid"])) {
 }
 else if(isset($_SESSION["Type"]) && $_SESSION["Type"] == "student" | $_SESSION['Type']=='staff')
 {
-    header('location:HomePage.php');
+    header('location:index.php');
 
 }
 

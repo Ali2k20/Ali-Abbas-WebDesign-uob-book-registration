@@ -10,7 +10,7 @@ if (!isset($_SESSION['userid'])) {
 // Redirect unauthorized users to the homepage.
 if(isset($_SESSION['Type'])){
 if ($_SESSION['Type'] == "student" | $_SESSION['Type'] == "staff") {
-    header("Location: HomePage.php");
+    header("Location: index.php");
     exit();
 }
 

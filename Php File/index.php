@@ -38,7 +38,7 @@ $query->execute();
 <body>
     <nav>
         <div class="image-container">
-           <a href="HomePage.php"> <img src="images/logo.png" alt="Logo"></a>
+           <a href="index.php"> <img src="images/logo.png" alt="Logo"></a>
         </div>
         <div class="SearchBar">
             <form action="roombrowsing.php" method="GET">
@@ -55,7 +55,7 @@ $query->execute();
                             <img class="profile-picture-update" src="<?php echo $s['pfp']; ?>" alt="Profile Picture class='logo-img'">
                         </button>
                         <div class="dropdown-content">
-                            <a href="HomePage.php">Home</a>
+                            <a href="index.php">Home</a>
                             <a href="ProfileView.php">View Profile</a>
                            
                             <a href="logout.php">Log Out</a>

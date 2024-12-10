@@ -9,7 +9,7 @@ require("conn.php");
 if(isset($_SESSION['Type'])){
 if ($_SESSION['Type'] =='student' | $_SESSION["Type"]== "staff") {
     if($_SESSION['Type']=="student") {
-    header("Location: HomePage.php");
+    header("Location: index.php");
     }
 else if($_SESSION["Type"]== "Admin")
 header("location:AdminPanel.php");

@@ -20,7 +20,7 @@
     <body>
         <nav>
             <div class="image-container">
-            <a href="HomePage.php"> <img src="images/logo.png" alt="Logo"></a>
+            <a href="index.php"> <img src="images/logo.png" alt="Logo"></a>
             </div>
             <h1>Profile View Page </h1>
             <div class="Menu">
@@ -33,7 +33,7 @@
                             </button>
                             
                             <div class="dropdown-content">
-                                <a href="HomePage.php">Home</a>
+                                <a href="index.php">Home</a>
                                 <a href="ProfileView.php">View Profile</a>
                                 <a href="logout.php">Log Out</a>
                             </div>
