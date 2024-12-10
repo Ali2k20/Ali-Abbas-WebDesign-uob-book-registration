@@ -8,15 +8,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['room-id'])) {
     $eqi = $_POST['eqi'];
     $des = $_POST['description'];
 
-    // Get current room details
+    
     $sql = "SELECT * FROM rooms WHERE room_id = ?";
     $editroom = $db->prepare($sql);
     $editroom->bindParam(1, $rid);
     $editroom->execute();
+    
     $r = $editroom->fetch();
-
+   
     if ($r) {
-        // Use current room values if inputs are empty
+
+        if ($r['room_name'] != $rname) {
+            $checkName = $db->prepare("SELECT * FROM rooms WHERE room_name = ?");
+            $checkName->bindParam(1, $rname);
+            $checkName->execute();
+
+            if ($checkName->rowCount() > 0) {
+                
+                header("location: AdminRoomManage.php?msg=The Room Name $rname Already Exists. Please Try Another Name!");
+                exit();
+            }
+        }
+
+
+       
         if (empty($_POST['room-name'])) {
             $rname = $r['room_name'];
         }
@@ -30,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['room-id'])) {
             $des = $r['des'];
         }
 
-        // Handle file upload if a new image is selected
+        
         if (isset($_FILES['room-pic']) && $_FILES['room-pic']['error'] == 0) {
             $fileTmpPath = $_FILES['room-pic']['tmp_name'];
             $fileName = $_FILES['room-pic']['name'];
@@ -38,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['room-id'])) {
             $newFileName = $rid . '.' . $fileExtension; // Generate a new filename based on room ID
             $destPath = "images/" . $newFileName;
 
-            // Check if the file is a valid image
+            
             if (preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $destPath)) {
                 if (move_uploaded_file($fileTmpPath, $destPath)) {
                     $roompic = $destPath; // Use the new file path
