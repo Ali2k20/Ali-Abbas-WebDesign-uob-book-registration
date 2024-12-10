@@ -57,7 +57,16 @@ if (isset($_GET['room_id'])) {
 <?php include("homenav.php"); 
 if(isset($_SESSION['presearch'])){
     $prev = $_SESSION['presearch']; 
- } else $prev = "";?>
+ } else $prev = "";
+ 
+ 
+?>
+
+
+ 
+ 
+ 
+ 
 
 
     <div class="container1">
@@ -116,7 +125,9 @@ if(isset($_SESSION['presearch'])){
                     echo "<select name='timeslot'  class='custom-select'>";
                    ?> <!-- <option disabled selected>Please Choose One</option>-->   <?php
                     foreach ($timeslots as $timeslot) {
-                        echo "<option value='" . $timeslot['tid'] . "'>" . $timeslot['start_duration'] . "  -  " . $timeslot['end_duration'] . "</option>";
+                        $dfs = date("F j, Y g:i A", strtotime($timeslot['start_duration'])); 
+                        $dff = date("F j, Y g:i A", strtotime($timeslot['end_duration']));
+                        echo "<option value='" . $timeslot['tid'] . "'>" . $dfs . "  -  " . $dff . "</option>";
                     }
                     echo "</select>";
                     echo "<input type='hidden' name='room_id' value='" . $details['room_id'] . "' />";
@@ -128,21 +139,52 @@ if(isset($_SESSION['presearch'])){
                 }
                 ?>
                 <a href="roomBrowsing.php?query=<?php echo $prev?>" class="btn-back">Back to Searching Rooms</a>
-                <?php 
-             if (isset($_SESSION['success']) || isset($_SESSION['error'])) {
-                if (!empty($_SESSION['success'])) {
-                    echo "<script>alert('" . ($_SESSION['success']) . "');</script>";
-                    $_SESSION['success'] = ""; 
-                } elseif (!empty($_SESSION['error'])) {
-                    echo "<script>alert('" . ($_SESSION['error']) . "');</script>";
-                    $_SESSION['error'] = ""; 
-                }
-            }?>
+                <section id="message"></section>
             </div>
         </div>
     </div>
     <footer>
         <p>&copy; Made By Mathiam And Sayed jaafar</p>
     </footer>
+
+    <script>
+const urlParams = new URLSearchParams(window.location.search);
+const message = urlParams.get('message');
+const roomId = urlParams.get('room_id');  
+
+if (message) {
+    const messageSection = document.getElementById('message');
+    messageSection.textContent = message;
+
+    if (message.toLowerCase().includes("success")) {
+        messageSection.style.backgroundColor = 'green';
+        messageSection.style.color = 'white';
+    } else {
+        messageSection.style.backgroundColor = 'red';
+        messageSection.style.color = 'white';
+    }
+
+    messageSection.style.padding = '15px';
+    messageSection.style.marginTop = '20px';
+    messageSection.style.borderRadius = '5px';
+    messageSection.style.textAlign = 'center';
+    messageSection.style.fontWeight = 'bold';
+    messageSection.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+    messageSection.style.transition = 'opacity 0.5s ease-out';
+
+    setTimeout(() => {
+        messageSection.style.opacity = '0';  
+        setTimeout(() => {
+            messageSection.textContent = ''; 
+        }, 500);  
+
+       
+        const urlWithoutMessage = window.location.href.split('?')[0];
+        window.history.replaceState(null, '', `${urlWithoutMessage}?room_id=${roomId}`);
+    }, 8000);
+}
+
+</script>
+
 </body>
 </html> 

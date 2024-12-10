@@ -83,6 +83,7 @@ $query->execute();
             <h1>Rooms</h1>
             <hr />
         </div>
+        <?php if($query->rowCount()>0){ ?>
         <div class="contains-rooms">
             <div class="room-grid">
                 <?php 
@@ -97,6 +98,7 @@ $query->execute();
                     }
                 ?>
             </div>
+                <?php } else { ?> <section><h2>There is No Avaliable rooms to show</h2></section>   <?php } ?>
         </div>
     </div>
 

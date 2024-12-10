@@ -73,7 +73,7 @@
                         <img class="admin-profile-picture" src="<?php echo $s['pfp']; ?>" alt="Admin Profile Picture">
                     </button>
                     <div class="admin-dropdown-content">
-                        <a href="HomePage.php">Dashboard</a>
+                        <a href="AdminPanel.php">Dashboard</a>
                         <a href="logout.php">Log Out</a>
                     </div>
                 </div>

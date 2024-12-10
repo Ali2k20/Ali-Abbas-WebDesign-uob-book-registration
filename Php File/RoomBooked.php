@@ -2,7 +2,7 @@
 session_start();
 require("conn.php");
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['room_id'])) {
     $user_id = $_SESSION['userid']; 
     $room_id = $_POST['room_id']; 
     $timeSlotId = $_POST['timeslot'];
@@ -39,19 +39,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $fetch = $db->prepare($conflictQuery);
         $fetch->bindParam(1, $user_id);
-        $fetch->bindParam(2, $end_time);  // Check if the new booking's end time conflicts with an existing booking
-        $fetch->bindParam(3, $start_time);  // Check if the new booking's start time conflicts with an existing booking
-        $fetch->bindParam(4, $start_time);  // Same check for reverse scenario: starts before, ends after
+        $fetch->bindParam(2, $end_time);  
+        $fetch->bindParam(3, $start_time);  
+        $fetch->bindParam(4, $start_time); 
         $fetch->bindParam(5, $end_time);
         $fetch->execute();
 
-        // Debugging: Output the number of rows fetched to ensure the conflict check is working
-        //echo "Rows fetched: " . $fetch->rowCount() . "<br>";
+       
 
         if ($fetch->rowCount() > 0) {
             echo "You already have a booking for this time. Please choose a different time.";
+            $_SESSION['error'] = "You already have a booking for this time. Please choose a different time.";
+            header("Location: roomdetail.php?room_id=" . $room_id . "&message=" . $_SESSION['error']);
+            exit();
         } else {
-            // Step 3: Create the booking (no conflict detected)
+            
             $bookingQuery = "INSERT INTO bookings VALUES (Null,?, ?, ?, NOW(), 'Booked')";
 
             $insertStmt = $db->prepare($bookingQuery);
@@ -60,15 +62,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $insertStmt->bindParam(3, $timeSlotId);
                 
             if ($insertStmt->execute()) {
-                echo "Booking successful!";
+               
+                $_SESSION['success'] = "Booking successful!";
+                header("Location: roomdetail.php?room_id=" . $room_id . "&message=" . $_SESSION['success']);
+                exit();
             } else {
-                echo "There was an error with your booking. Please try again.";
+                // also this extra but i already calculated all the posblities that it woudlnt happen
+                $_SESSION['error'] = "There was an error with your booking. Please try again.";
+                header("Location: roomdetail.php?room_id=" . $room_id . "&message=" . $_SESSION['error']);
+                exit();
             }
         }
     } else {
-        echo "Invalid timeslot selected.";
+        // If the timeslot is invalid this is extra from me but i dont think we need this
+        $_SESSION['error'] = "Invalid timeslot selected.";
+        header("Location: roomdetail.php?room_id=" . $room_id . "&message=" . $_SESSION['error']);
+        exit();
     }
-} else {
-    echo "Invalid request method.";
+} else {  // same for this sayed extra from me 
+    $_SESSION['error'] = "Invalid request method.";
+    header("Location: roomdetail.php?room_id=" . $room_id . "&message=" . $_SESSION['error']);
+    exit();
 }
 ?>

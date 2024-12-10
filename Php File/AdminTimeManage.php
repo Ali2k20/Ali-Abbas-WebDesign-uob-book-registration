@@ -72,7 +72,7 @@
 
     <div class="admin-menu">
         <ul>
-            <li><a href="AdminRoomManage.php" class="admin-booking">TimeSlot Management</a></li>
+            <li><a href="AdminRoomManage.php" class="admin-booking">Room Managment</a></li>
             <li>
                 <div class="admin-dropdown">
                     <button class="admin-dropbtn">

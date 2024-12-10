@@ -7,6 +7,9 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+.container {
+    flex-grow: 1; /* Pushes the footer to the bottom when content is short */
+}
 
 /* Navbar Styling */
 nav {
@@ -315,6 +318,9 @@ footer {
     text-align: center;
     padding: 20px 0;
     font-size: 16px;
+    margin-top: auto; /* Ensures the footer is pushed to the bottom */
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: add some shadow */
 }
 
 footer p {
