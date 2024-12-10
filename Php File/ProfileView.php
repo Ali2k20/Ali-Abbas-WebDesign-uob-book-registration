@@ -90,15 +90,15 @@ $Type = $user['Type'];
             </div>
             <?php
 
-if (isset($_SESSION['success'])) {
-    echo "<div class='success-message' id='message'>{$_SESSION['success']}</div>";
-    unset($_SESSION['success']); 
+if (isset($_SESSION['success1'])) {
+    echo "<div class='success-message' id='message'>{$_SESSION['success1']}</div>";
+    unset($_SESSION['success1']); 
 }
 
 
-if (isset($_SESSION['error'])) {
-    echo "<div class='error-message' id='message'>{$_SESSION['error']}</div>";
-    unset($_SESSION['error']); 
+if (isset($_SESSION['error1'])) {
+    echo "<div class='error-message' id='message'>{$_SESSION['error1']}</div>";
+    unset($_SESSION['error1']); 
 }
 ?>
 

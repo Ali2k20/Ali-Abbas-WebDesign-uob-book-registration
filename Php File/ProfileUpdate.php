@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['submit'])) {
 
     }else {$email = $r['Email']; }
     if (!preg_match($emailRegex, $email)) {
-        $_SESSION['error'] = "Please enter a valid email address.";
+        $_SESSION['error1'] = "Please enter a valid email address.";
         header("Location: profileview.php");
         exit();
         
@@ -62,13 +62,13 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['submit'])) {
 
     
      if (!empty($_POST['password']) && !preg_match($passwordRegex, $password)) {
-        $_SESSION['error'] = "Please enter a valid password (8-25 characters, at least one uppercase letter, one lowercase letter, and one special character).";
+        $_SESSION['error1'] = "Please enter a valid password (8-25 characters, at least one uppercase letter, one lowercase letter, and one special character).";
         header("Location: profileview.php");
         exit();
     } 
    
     else if (!empty($_POST['password']) && $password !== $confirm_password) {
-        $_SESSION['error'] = "Passwords do not match.";
+        $_SESSION['error1'] = "Passwords do not match.";
         header("Location: profileview.php");
         exit();
     } else {
@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['submit'])) {
             $check->bindParam(1, $email);
             $check->execute();
             if ($check->rowCount() > 0) {
-                $_SESSION['error'] = "The Email: $email is already in use. It won't be updated.";
+                $_SESSION['error1'] = "The Email: $email is already in use. It won't be updated.";
                 $email = $currentEmail;
             }
         }
@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['submit'])) {
             
             
             if (!preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $profile_pic_name)) {
-                $_SESSION['error'] = "Please upload a valid image file (JPG, JPEG, PNG, GIF, WEBP).";
+                $_SESSION['error1'] = "Please upload a valid image file (JPG, JPEG, PNG, GIF, WEBP).";
                 header("Location: profileview.php");
                 exit();
             }
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['submit'])) {
             if (move_uploaded_file($profile_pic_tmp_name, $profile_pic_folder)) {
                 $roompic = $profile_pic_folder; 
             } else {
-                $_SESSION['error'] = "There was an error uploading the profile picture.";
+                $_SESSION['error1'] = "There was an error uploading the profile picture.";
                 header("Location: profileview.php");
                 exit();
             }
@@ -135,13 +135,13 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['submit'])) {
        
         $edit_query->execute();
         if ($edit_query) {
-            $_SESSION['success'] = "Profile Updated!";
+            $_SESSION['success1'] = "Profile Updated!";
             header("Location: profileview.php");
             exit();
         }
     }
 } else {
-    $_SESSION['error'] = "Error occurred during update.";
+    $_SESSION['error1'] = "Error occurred during update.";
     header("Location: profileview.php");
     exit();
 }
