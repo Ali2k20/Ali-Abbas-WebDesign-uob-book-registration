@@ -25,16 +25,13 @@ body {
 
 /* Profile View Container (Header + Profile Details) */
 .profile-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 100%;
     padding: 30px;
     box-sizing: border-box;
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .profile-picture {
@@ -151,18 +148,6 @@ body {
     outline: none;
 }
 
-/* Styling for input fields in the edit form */
-.field input[type="text"],
-.field input[type="password"],
-.field input[type="file"] {
-    padding: 10px;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-}
-
 /* Styling for page title in the edit form */
 .edit-profile-form header.page-title {
     font-size: 2em;
@@ -170,6 +155,8 @@ body {
     margin-bottom: 20px;
     font-weight: bold;
 }
+
+/* Footer */
 footer {
     background-color: #004fa3;
     color: white;
@@ -180,4 +167,110 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .profile-container {
+        padding: 20px;
+    }
+
+    .profile-picture img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-details p {
+        font-size: 14px;
+    }
+
+    .btn, .back-btn {
+        padding: 8px 16px;
+    }
+
+    .field input[type="text"],
+    .field input[type="password"],
+    .field input[type="file"] {
+        padding: 8px;
+    }
+
+    footer {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        padding: 15px;
+    }
+
+    .profile-picture img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-details p {
+        font-size: 12px;
+    }
+
+    .btn, .back-btn {
+        padding: 6px 12px;
+    }
+
+    .field input[type="text"],
+    .field input[type="password"],
+    .field input[type="file"] {
+        padding: 6px;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+}
+
+
+/* General message styles */
+#message {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 15px;
+    margin: 20px auto;
+    width: 90%; /* Adjust width as per your layout */
+    max-width: 600px; /* Restrict the maximum width */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Success message styling */
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Error message styling */
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Animation effect when message appears */
+#message {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hiding message (used for transition effect) */
+#message.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
 }

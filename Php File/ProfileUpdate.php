@@ -1,6 +1,6 @@
 <?php 
-// 
-// Ensure session is already started in 'profilenav.php'
+
+
 session_start();
 require("conn.php");
 
@@ -17,12 +17,12 @@ if ($_SESSION['Type'] == "Admin") {
   if ($_SESSION['Type'] == "student") {
     $emailRegex = '/^[0-9]{3,12}@stu\.uob\.edu\.bh$/';
 } else if ($_SESSION['Type'] == 'staff') {
-    $emailRegex = '/^[a-zA-Z]{3,20}@uob\.edu\.bh$/';
+    $emailRegex = '/^[a-zA-Z]{3,20}@uob\.edu\.bh$/'; 
 }
 
 $passwordRegex = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9_#@%*\\-]{8,24}$/";
 
-// If the form is submitted
+
 if ($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['submit'])) {
     
     if (!empty($_POST['password'])) {
@@ -32,83 +32,91 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['submit'])) {
     $profile_pic = $_FILES['profile_pic'];
     $id = $_SESSION['userid'];
 
-    // Fetch the current user data from the database
+  
     $check = $db->prepare("SELECT * FROM user WHERE id=?");
     $check->bindParam(1, $id);
     $check->execute();
     if ($r = $check->fetch()) {
         $currentEmail = $r['Email'];
 
-        // Set the name and profile pic if not changed
         if (empty($_POST['name'])) {
             $name = $r['FullName'];
         } else {
             $name = $_POST['name'];
         }
 
-        if ($_FILES["profile_pic"]["error"] === UPLOAD_ERR_NO_FILE) {
-            $profile_pic_folder = $r['pfp'];  // Use the existing profile picture if no new one uploaded
-        }
+        
     }
 
-    // Validate the email format
     if(!empty($_POST['email'])){
         $email = $_POST['email'];
 
     }else {$email = $r['Email']; }
     if (!preg_match($emailRegex, $email)) {
-        echo "<div class='message'>
-                <p>Please enter a valid email address . </p>
-              </div><br>";
-        echo "<a href='profileview.php'><button class='btn'>Go Back</button></a>";
+        $_SESSION['error'] = "Please enter a valid email address.";
+        header("Location: profileview.php");
         exit();
         
     } 
 
 
-    // Validate password format if password is provided
+    
      if (!empty($_POST['password']) && !preg_match($passwordRegex, $password)) {
-        echo "<div class='message'>
-                <p>Please enter a valid password (8-25 characters, at least one uppercase letter, one lowercase letter, and one special character).</p>
-              </div><br>";
-        echo "<a href='profileview.php'><button class='btn'>Go Back</button></a>";
+        $_SESSION['error'] = "Please enter a valid password (8-25 characters, at least one uppercase letter, one lowercase letter, and one special character).";
+        header("Location: profileview.php");
+        exit();
     } 
-    // Check if passwords match
+   
     else if (!empty($_POST['password']) && $password !== $confirm_password) {
-        echo "<div class='message'>
-                <p>Passwords do not match.</p>
-              </div><br>";
-        echo "<a href='profileview.php'><button class='btn'>Go Back</button></a>";
+        $_SESSION['error'] = "Passwords do not match.";
+        header("Location: profileview.php");
+        exit();
     } else {
-        // Check if the email already exists in the database
+      
         if (!empty($_POST['email'])) {
             $check = $db->prepare("SELECT * FROM user WHERE Email=?");
             $check->bindParam(1, $email);
             $check->execute();
             if ($check->rowCount() > 0) {
-                echo "<div class='message'>
-                        <p>The Email: $email is already in use. It won't be updated.</p>
-                      </div><br>";
+                $_SESSION['error'] = "The Email: $email is already in use. It won't be updated.";
                 $email = $currentEmail;
             }
         }
 
-        // Handle profile picture upload if a new file is selected
+        
         if ($_FILES["profile_pic"]["error"] == 0) {
             $profile_pic_name = $profile_pic['name'];
             $profile_pic_tmp_name = $profile_pic['tmp_name'];
+            
+            
+            if (!preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $profile_pic_name)) {
+                $_SESSION['error'] = "Please upload a valid image file (JPG, JPEG, PNG, GIF, WEBP).";
+                header("Location: profileview.php");
+                exit();
+            }
+        
+            
             $profile_pic_folder = 'images/' . $profile_pic_name;
-            move_uploaded_file($profile_pic_tmp_name, $profile_pic_folder);
+            if (move_uploaded_file($profile_pic_tmp_name, $profile_pic_folder)) {
+                $roompic = $profile_pic_folder; 
+            } else {
+                $_SESSION['error'] = "There was an error uploading the profile picture.";
+                header("Location: profileview.php");
+                exit();
+            }
+        } else {
+            
+            $profile_pic_folder = $r['pfp'];
         }
 
-        // Hash password if provided
+       
         if (!empty($_POST['password'])) {
             $password = password_hash($password, PASSWORD_DEFAULT);
         }
 
-        // Prepare the SQL query to update user data
+        
         if (!empty($_POST['password'])) {
-            // If password is updated, include it in the query
+          
             $edit_query = $db->prepare("UPDATE user SET FullName=?, Email=?, Password=?, pfp=? WHERE id=?");
             $edit_query->bindParam(1, $name);
             $edit_query->bindParam(2, $email);
@@ -116,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['submit'])) {
             $edit_query->bindParam(4, $profile_pic_folder);
             $edit_query->bindParam(5, $id);
         } else {
-            // If password is not updated, exclude it from the query
+            
             $edit_query = $db->prepare("UPDATE user SET FullName=?, Email=?, pfp=? WHERE id=?");
             $edit_query->bindParam(1, $name);
             $edit_query->bindParam(2, $email);
@@ -124,19 +132,17 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['submit'])) {
             $edit_query->bindParam(4, $id);
         }
 
-        // Execute the update query
+       
         $edit_query->execute();
         if ($edit_query) {
-            echo "<div class='message'>
-                    <p>Profile Updated!</p>
-                  </div><br>";
-            echo "<a href='profileview.php'><button class='btn'>Go Home</button></a>";
+            $_SESSION['success'] = "Profile Updated!";
+            header("Location: profileview.php");
+            exit();
         }
     }
 } else {
-    echo "<div class='message'>
-    <p>Error</p>
-  </div><br>";
-echo "<a href='profileview.php'><button class='btn'>Go Home</button></a>";
+    $_SESSION['error'] = "Error occurred during update.";
+    header("Location: profileview.php");
+    exit();
 }
 ?>
